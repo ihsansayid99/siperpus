@@ -4,9 +4,6 @@
 	include './helpers/helper_umum.php';
 	session_start();
 	if(isset($_SESSION['sesi'])){
-		if(!isset($_GET['p'])){
-			header('location: index.php?p=beranda');
-		}
 ?>
 
 <?php 
@@ -22,6 +19,6 @@
 		
 <?php 
 }else{
-    echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+    header('location:login.php');
 } 
 ?>
