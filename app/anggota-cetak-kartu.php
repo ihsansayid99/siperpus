@@ -11,8 +11,8 @@
 			$sql = "SELECT * FROM tbanggota WHERE idanggota = '{$id_anggota}';";
 			$query = mysqli_query($db_conn, $sql);
 			$row = $query->num_rows;
+			ob_start();
 ?>
-<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
