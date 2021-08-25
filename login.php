@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
         if(password_verify($pass, $pass_hash)){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
-            echo "<meta http-equiv='refresh' content='0; url=index.php?$user=$sesi'>";
+            echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
