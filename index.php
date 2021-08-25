@@ -4,6 +4,7 @@
 	include './helpers/helper_umum.php';
 	session_start();
 	nama_d($_SESSION);
+	phpinfo();
 ?>
 
 <?php 
