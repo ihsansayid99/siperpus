@@ -2,6 +2,7 @@
 	include './config/konfigurasi-umum.php';
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
+	nama_d($_SESSION);
 ?>
 
 <?php 
