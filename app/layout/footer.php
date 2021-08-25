@@ -1,6 +1,6 @@
 </div>
 		<div class="row">
-			<footer class="co-12 w-100 text-center py-3 text-white font-weight-bold bg-info">
+			<footer class="footer-desc co-12 w-100 text-center py-3 text-white font-weight-bold bg-info">
                 <p><?php echo $_SITE_INFO; ?></p>
                 <p><?php echo $_SITE_CREDIT; ?></p>
 			</footer>

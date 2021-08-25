@@ -61,51 +61,53 @@
 			<?php 
 				if($row > 0) {
 			?>
-				<table class="table data-table">
-					<thead class="thead-dark">
-						<tr>
-							<th>No.</th>
-							<th>ID Anggota</th>
-							<th>Nama Lengkap</th>
-							<th>Foto</th>
-							<th>Jenis Kelamin</th>
-							<th>Alamat</th>
-							<th>Status Aktif</th>
-							<th>Aksi</th>
-						</tr>
-					</thead>
-				<?php
-					$i = 1;
-					while($data = mysqli_fetch_array($query)) {
-				?>
-					<tbody>
-						<tr>
-							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo $data['idanggota']; ?></td>
-							<td><?php echo $data['nama']; ?></td>
-							<td>
-								<?php
-									$data_foto = $data['foto'];
-									if($data_foto == '-') {
-										$data_foto = 'foto-default.jpg';
-									}
-								?>
-								<img src="<?php echo './images/' . $data_foto; ?>" width="60">
-							</td>
-							<td><?php echo ($data['jeniskelamin'] == 'L') ? 'Pria' : 'Wanita'; ?></td>
-							<td><?php echo $data['alamat']; ?></td>
-							<td class="text-center"><?php echo ($data['status'] == 'Y') ? 'Ya' : 'Tidak'; ?></td>
-							<td class="text-center">
-								<a href="./app/anggota-cetak-kartu.php?&id=<?php echo $data['idanggota']; ?>" class="btn btn-primary btn-sm" target="_blank">Cetak Kartu</a>
-								<a href="index.php?p=anggota-ubah&id=<?php echo $data['idanggota']; ?>" class="btn btn-warning btn-sm">Ubah</a>
-								<a href="index.php?p=anggota-hapus&id=<?php echo $data['idanggota']; ?>" class="btn btn-danger btn-sm confirm">Hapus</a>
-							</td>
-						</tr>
-					</tbody>
-				<?php
-					}
-				?>
-				</table>
+				<div class="table-responsive">
+					<table class="table data-table">
+						<thead class="thead-dark">
+							<tr>
+								<th>No.</th>
+								<th>ID Anggota</th>
+								<th>Nama Lengkap</th>
+								<th>Foto</th>
+								<th>Jenis Kelamin</th>
+								<th>Alamat</th>
+								<th>Status Aktif</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+					<?php
+						$i = 1;
+						while($data = mysqli_fetch_array($query)) {
+					?>
+						<tbody>
+							<tr>
+								<td class="text-center"><?php echo $i++; ?></td>
+								<td><?php echo $data['idanggota']; ?></td>
+								<td><?php echo $data['nama']; ?></td>
+								<td>
+									<?php
+										$data_foto = $data['foto'];
+										if($data_foto == '-') {
+											$data_foto = 'foto-default.jpg';
+										}
+									?>
+									<img src="<?php echo './images/' . $data_foto; ?>" width="60">
+								</td>
+								<td><?php echo ($data['jeniskelamin'] == 'L') ? 'Pria' : 'Wanita'; ?></td>
+								<td><?php echo $data['alamat']; ?></td>
+								<td class="text-center"><?php echo ($data['status'] == 'Y') ? 'Ya' : 'Tidak'; ?></td>
+								<td class="text-center">
+									<a href="./app/anggota-cetak-kartu.php?&id=<?php echo $data['idanggota']; ?>" class="btn btn-primary btn-sm" target="_blank">Cetak Kartu</a>
+									<a href="index.php?p=anggota-ubah&id=<?php echo $data['idanggota']; ?>" class="btn btn-warning btn-sm">Ubah</a>
+									<a href="index.php?p=anggota-hapus&id=<?php echo $data['idanggota']; ?>" class="btn btn-danger btn-sm confirm">Hapus</a>
+								</td>
+							</tr>
+						</tbody>
+					<?php
+						}
+					?>
+					</table>
+				</div>
 				<div class="table-lower">
 					<div class="table-lower-left mg-top-5">
 						Jumlah Data: <span class="font-weight-bold"><?php echo $row; ?></span>

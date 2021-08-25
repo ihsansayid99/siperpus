@@ -61,54 +61,56 @@
 			<?php 
 				if($row > 0) {
 			?>
-				<table class="table data-table">
-					<thead class="thead-dark">
-						<tr>
-							<th>No.</th>
-							<th>ID Buku</th>
-							<th>Judul Buku</th>
-							<th>Kategori</th>
-							<th>Penulis</th>
-							<th>Penerbit</th>
-							<th>Status</th>
-							<th>Aksi</th>
-						</tr>
-					</thead>
-				<?php
-					$i = 1;
-					while($data = mysqli_fetch_array($query)) {
-				?>
-					<tbody>
-						<tr>
-							<td class="text-center"><?php echo $i++; ?></td>
-							<td><?php echo $data['id_buku']; ?></td>
-							<td><?php echo $data['judul_buku']; ?></td>
-							<td>
-								<?php 
-									echo $data['nama_kategori'];
-								?>
-							</td>
-							<td>
-								<?php
-									echo $data['nama_penulis'];
-								?>	
-							</td>
-							<td>
-								<?php
-									echo $data['nama_penerbit'];
-								?>	
-							</td>
-							<td class="text-center"><?php echo $data['status']; ?></td>
-							<td class="text-center">
-								<a href="index.php?p=buku-ubah&id=<?php echo $data['id_buku']; ?>" class="btn btn-warning btn-sm">Ubah</a>
-								<a href="index.php?p=buku-hapus&id=<?php echo $data['id_buku']; ?>" class="btn btn-danger btn-sm confirm">Hapus</a>
-							</td>
-						</tr>
-					</tbody>
-				<?php
-					}
-				?>
-				</table>
+				<div class="table-responsive">
+					<table class="table data-table">
+						<thead class="thead-dark">
+							<tr>
+								<th>No.</th>
+								<th>ID Buku</th>
+								<th>Judul Buku</th>
+								<th>Kategori</th>
+								<th>Penulis</th>
+								<th>Penerbit</th>
+								<th>Status</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+					<?php
+						$i = 1;
+						while($data = mysqli_fetch_array($query)) {
+					?>
+						<tbody>
+							<tr>
+								<td class="text-center"><?php echo $i++; ?></td>
+								<td><?php echo $data['id_buku']; ?></td>
+								<td><?php echo $data['judul_buku']; ?></td>
+								<td>
+									<?php 
+										echo $data['nama_kategori'];
+									?>
+								</td>
+								<td>
+									<?php
+										echo $data['nama_penulis'];
+									?>	
+								</td>
+								<td>
+									<?php
+										echo $data['nama_penerbit'];
+									?>	
+								</td>
+								<td class="text-center"><?php echo $data['status']; ?></td>
+								<td class="text-center">
+									<a href="index.php?p=buku-ubah&id=<?php echo $data['id_buku']; ?>" class="btn btn-warning btn-sm">Ubah</a>
+									<a href="index.php?p=buku-hapus&id=<?php echo $data['id_buku']; ?>" class="btn btn-danger btn-sm confirm">Hapus</a>
+								</td>
+							</tr>
+						</tbody>
+					<?php
+						}
+					?>
+					</table>
+				</div>
 				<div class="table-lower">
 					<div class="table-lower-left mg-top-5">
 						Jumlah Data: <span class="font-weight-bold"><?php echo $row; ?></span>

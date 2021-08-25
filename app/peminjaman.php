@@ -60,6 +60,7 @@
 			<?php 
 				if($row > 0) {
 			?>
+			<div class="table-responsive">
 				<table class="table data-table">
 					<thead class="thead-dark">
 						<tr>
@@ -97,6 +98,7 @@
 					}
 				?>
 				</table>
+			</div>
 				<div class="table-lower">
 					<div class="table-lower-left mg-top-5">
 						Jumlah Data: <span class="font-weight-bold"><?php echo $row; ?></span>
