@@ -1,30 +1,8 @@
 <?php
-session_start();
 
-include 'config/koneksi-db.php';
+    include 'config/koneksi-db.php';
 
-if(isset($_POST['submit'])){
-    $user = isset($_POST['user']) ? $_POST['user'] : "";
-    $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
-
-    $query = mysqli_query($db_conn, "SELECT * FROM admin WHERE username = '$user'");
-    $sesi = mysqli_num_rows($query);
-    $data_admin = mysqli_fetch_array($query);
-    if($sesi > 0){
-        $pass_hash = $data_admin['password'];
-        if(password_verify($pass, $pass_hash)){
-            $_SESSION['id_admin'] = $data_admin['id_admin'];
-            $_SESSION['sesi'] = $data_admin['nm_admin'];
-            echo "<meta http-equiv='location' content='0; url=index.php'>";
-        } else {
-            echo "<script>alert('Username Dan Password Salah!!');</script>";
-            echo "<meta http-equiv='refresh' content='0; url=login.php'>";
-        }
-    } else {
-        echo "<script>alert('Username Dan Password Salah!');</script>";
-        echo "<meta http-equiv='refresh' content='0; url=login.php'>";
-    }
-}
+    if(!isset($_POST['submit'])){
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,3 +57,31 @@ if(isset($_POST['submit'])){
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
+
+<?php 
+    }else{
+        session_start();
+        $user = $_POST['user'];
+        $pass = $_POST['pass'];
+
+        $query = mysqli_query($db_conn, "SELECT * FROM admin WHERE username = '$user'");
+        $sesi = mysqli_num_rows($query);
+        $data_admin = mysqli_fetch_array($query);
+        if($sesi > 0){
+            $pass_hash = $data_admin['password'];
+            if(password_verify($pass, $pass_hash)){
+                $_SESSION['id_admin'] = $data_admin['id_admin'];
+                $_SESSION['sesi'] = $data_admin['nm_admin'];
+                echo "<script>alert('Login Berhasil!');</script>";
+			    echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+            } else {
+                echo "<script>alert('Username Dan Password Salah!!');</script>";
+                echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+            }
+        } else {
+            echo "<script>alert('Username Dan Password Salah!');</script>";
+            echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+        }
+    }
+
+?>
