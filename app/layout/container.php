@@ -1,4 +1,5 @@
 <?php
+
 	/* Menentukkan halaman berdasarkan menu yang dipilih */
 	$app_dir = 'app';
 

@@ -20,9 +20,10 @@ if(isset($_POST['submit'])){
             session_start();
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
+            $_SESSION['status'] = 'login';
             
             echo "<script>alert('Login Berhasil!');</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
+			header('location: index.php?p=beranda');
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
