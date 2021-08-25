@@ -19,6 +19,7 @@ if(isset($_POST['submit'])){
             
             echo "<script>alert('Login Berhasil!');</script>";
 			header('location: index.php');
+            die();
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
