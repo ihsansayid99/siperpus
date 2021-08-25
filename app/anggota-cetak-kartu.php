@@ -72,6 +72,7 @@
 			$dompdf->setPaper('A6', 'landscape'); 
 			$dompdf->render(); 
 			$dompdf->stream("Kartu-Anggota-".$id_anggota);
+			exit();
 		}
 	}
 ?>
