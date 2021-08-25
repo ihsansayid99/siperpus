@@ -4,6 +4,7 @@ session_start();
 include 'config/koneksi-db.php';
 if(isset($_SESSION['sesi'])){
     header('location: index.php');
+    exit;
 }
 if(isset($_POST['submit'])){
     $user = isset($_POST['user']) ? $_POST['user'] : "";
@@ -19,6 +20,7 @@ if(isset($_POST['submit'])){
             $_SESSION['sesi'] = $data_admin['nm_admin'];
             
             header('location: index.php?p=beranda');
+            exit;
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
