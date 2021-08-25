@@ -2,7 +2,7 @@
 	include './config/konfigurasi-umum.php';
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
-	
+	session_start();
 	if(isset($_SESSION['sesi'])){
 		if(!isset($_GET['p'])){
 			header('location: index.php?p=beranda');
