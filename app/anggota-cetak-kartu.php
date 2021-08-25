@@ -66,7 +66,13 @@
 
 <?php
 			$html = ob_get_clean();
-
+			$f;
+$l;
+if(headers_sent($f,$l))
+{
+    echo $f,'<br/>',$l,'<br/>';
+    die('now detect line');
+}
 			$dompdf = new Dompdf();
 			$dompdf->loadHtml($html); 
 			$dompdf->setPaper('A6', 'landscape'); 
