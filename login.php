@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-if(isset($_SESSION['sesi'])){
-    echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
-}
-
 include 'config/koneksi-db.php';
-
+if(isset($_SESSION['sesi'])){
+    header('location: index.php');
+}
 if(isset($_POST['submit'])){
     $user = isset($_POST['user']) ? $_POST['user'] : "";
     $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
@@ -19,8 +17,8 @@ if(isset($_POST['submit'])){
         if(password_verify($pass, $pass_hash)){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
-
-            echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
+            
+            header('location: index.php?p=beranda');
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
