@@ -21,7 +21,6 @@ if(isset($_POST['submit'])){
             $_SESSION['sesi'] = $data_admin['nm_admin'];
 
             header('location: index.php?p=beranda');
-            die();
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
