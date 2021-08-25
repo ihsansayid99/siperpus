@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-$_SESSION['sesi'] = NULL;
 if(isset($_SESSION['sesi'])){
     echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
 }
@@ -57,7 +56,7 @@ if(isset($_POST['submit'])){
                 </div>
                 <h1 class="text-center">ADMIN PERPUSTAKAAN</h1>
             </div>
-            <div class="form-login">
+            <div class="form-login container">
                 <h2 class="text-center">Login</h2>
                 <hr style="border: 3px solid white;width:45%;">
                 <form action="" method="POST">
