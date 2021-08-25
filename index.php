@@ -18,6 +18,6 @@
 		
 <?php 
 }else{
-    echo "TEST";
+    echo $_SESSION;
 } 
 ?>
