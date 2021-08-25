@@ -1,9 +1,4 @@
 <?php
-session_start();
-
-if(isset($_SESSION['sesi'])){
-    header('location:index.php?p=beranda');
-}
 
 include 'config/koneksi-db.php';
 
