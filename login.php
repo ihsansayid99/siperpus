@@ -20,7 +20,7 @@ if(isset($_POST['submit'])){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
 
-            header('location: index.php?$user=$sesi');
+            header('location: index.php?p=beranda');
             die();
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";

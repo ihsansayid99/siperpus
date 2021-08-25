@@ -3,6 +3,9 @@
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
 	session_start();
+	if(!isset($_GET['p'])){
+	   header('location:index.php?p=beranda');
+	}
 	if(isset($_SESSION['sesi'])){
 ?>
 

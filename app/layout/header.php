@@ -1,8 +1,3 @@
-<?php 
-if(!isset($_GET['p'])){
-	header('location:index.php?p=beranda');
-}
-?>
 <!DOCTYPE html>
 <html lang="id">
 <head>
