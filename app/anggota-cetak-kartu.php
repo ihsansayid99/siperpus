@@ -1,7 +1,8 @@
 <?php
 	include '../config/koneksi-db.php';
-	use Dompdf\Dompdf; 
 	require("../assets/vendor/autoload.php");
+	use Dompdf\Dompdf; 
+	$dompdf = new Dompdf();
 	if(isset($_GET['id'])) { // memperoleh anggota_id
 		$id_anggota = $_GET['id'];
 
@@ -10,9 +11,8 @@
 			$sql = "SELECT * FROM tbanggota WHERE idanggota = '{$id_anggota}';";
 			$query = mysqli_query($db_conn, $sql);
 			$row = $query->num_rows;
-			ob_start();
 ?>
-
+<?php ob_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -67,17 +67,17 @@
 <?php
 			$html = ob_get_clean();
 			$f;
-$l;
-if(headers_sent($f,$l))
-{
-    echo $f,'<br/>',$l,'<br/>';
-    die('now detect line');
-}
-			$dompdf = new Dompdf();
+			$l;
+			if(headers_sent($f,$l))
+			{
+				echo $f,'<br/>',$l,'<br/>';
+				die('now detect line');
+			}
 			$dompdf->loadHtml($html); 
 			$dompdf->setPaper('A6', 'landscape'); 
 			$dompdf->render(); 
-			$dompdf->stream("Kartu-Anggota-".$id_anggota);
+			ob_end_clean();
+			$dompdf->stream("Kartu-Anggota-".$id_anggota, array("Attachment"=>false));
 			exit();
 		}
 	}
