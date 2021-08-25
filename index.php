@@ -1,8 +1,8 @@
 <?php
 	include './config/konfigurasi-umum.php';
+	session_start();
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
-	session_start();
 	if(isset($_SESSION['sesi'])){
 ?>
 
