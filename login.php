@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-if(isset($_SESSION['sesi'])){
-    header('location:index.php?p=beranda');
-}
+$_SESSION['sesi'] = NULL;
 
 include 'config/koneksi-db.php';
 
@@ -19,9 +17,7 @@ if(isset($_POST['submit'])){
         if(password_verify($pass, $pass_hash)){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
-
-            header("location: index.php?$user=$sesi");
-            die();
+            echo "<meta http-equiv='refresh' content='0; url=index.php?$user=$sesi'>";
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
