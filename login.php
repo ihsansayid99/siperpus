@@ -60,7 +60,6 @@
 
 <?php 
     }else{
-        session_start();
         $user = $_POST['user'];
         $pass = $_POST['pass'];
 
@@ -70,6 +69,7 @@
         if($sesi > 0){
             $pass_hash = $data_admin['password'];
             if(password_verify($pass, $pass_hash)){
+                session_start();
                 $_SESSION['id_admin'] = $data_admin['id_admin'];
                 $_SESSION['sesi'] = $data_admin['nm_admin'];
                 echo "<script>alert('Login Berhasil!');</script>";
