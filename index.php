@@ -2,7 +2,6 @@
 	include './config/konfigurasi-umum.php';
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
-	session_start();
 	if(!isset($_GET['p'])){
 		echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
 	}
