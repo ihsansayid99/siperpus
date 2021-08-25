@@ -9,8 +9,7 @@
 
     if(!$db_conn){
         die("Gagal terhubung dengan database: " . mysqli_connect_error());
-    }
-
+    } 
 ?>
 
 
@@ -25,6 +24,19 @@
 
     if(!$db_conn){
         die("Gagal terhubung dengan database: " . mysqli_connect_error());
-    } -->
+    } 
+
+    $hostname   = "localhost";
+    $user       = "root";
+    $password   = "";
+    $db_name    = "dbpus";
+
+    $db_conn = mysqli_connect($hostname, $user, $password, $db_name);
+
+    if(!$db_conn){
+        die("Gagal terhubung dengan database: " . mysqli_connect_error());
+    }
+
+-->
 
 
