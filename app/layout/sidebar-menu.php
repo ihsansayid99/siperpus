@@ -3,12 +3,6 @@
 		<div class="col-md-2 p-0 bg-dark text-white sidebar">
 			<ul class="sidebar-menu">
 				<li class="profile">
-                    <?php  
-                        session_start();
-                        if($_SESSION['sesi'] != "login"){
-                            header('location: login.php');
-                        }
-                    ?>
 					<div class="profile-img bg-info rounded-circle mx-auto" style="width: 80px;height: 80px; background-image: url('./images/foto-default.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;"></div>
 					<p class="text-center" style="padding: 5px 10px;">Hai, <?php echo $_SESSION['sesi']; ?>!</p>
 				</li>

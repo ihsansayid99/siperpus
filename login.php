@@ -1,9 +1,13 @@
 <?php
+session_start();
+
+if(isset($_SESSION['sesi'])){
+    header('location:index.php?p=beranda');
+}
 
 include 'config/koneksi-db.php';
 
 if(isset($_POST['submit'])){
-    session_start();
     $user = isset($_POST['user']) ? $_POST['user'] : "";
     $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
 
@@ -15,10 +19,8 @@ if(isset($_POST['submit'])){
         if(password_verify($pass, $pass_hash)){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
-            $_SESSION['status'] = 'login';
-            
-            echo "<script>alert('Login Berhasil!');</script>";
-			header('location: index.php');
+
+            header("location: index.php?$user=$sesi");
             die();
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
