@@ -2,7 +2,7 @@
 session_start();
 
 if(isset($_SESSION['sesi'])){
-    header('location:index.php?p=beranda');
+    echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
 }
 
 include 'config/koneksi-db.php';
