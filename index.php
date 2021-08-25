@@ -2,7 +2,6 @@
 	include './config/konfigurasi-umum.php';
 	include './config/koneksi-db.php';
 	include './helpers/helper_umum.php';
-	if(isset($_SESSION['sesi'])){
 ?>
 
 <?php 
@@ -15,9 +14,4 @@
 </div>
 
 <?php include('app/layout/footer.php'); ?>
-		
-<?php 
-}else{
-    echo "<meta http-equiv='refresh' content='0; url=login.php'>";
-} 
-?>
+	
