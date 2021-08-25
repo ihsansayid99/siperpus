@@ -2,6 +2,9 @@
 session_start();
 
 $_SESSION['sesi'] = NULL;
+if(isset($_SESSION['sesi'])){
+    echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
+}
 
 include 'config/koneksi-db.php';
 
