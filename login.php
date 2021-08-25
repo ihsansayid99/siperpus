@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
             $_SESSION['sesi'] = $data_admin['nm_admin'];
             
             echo "<script>alert('Login Berhasil!');</script>";
-			header('location: index.php?p=beranda');
+			echo "<meta http-equiv='refresh' content='0; url=index.php?p=beranda'>";
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
