@@ -3,6 +3,7 @@
 include 'config/koneksi-db.php';
 
 if(isset($_POST['submit'])){
+    session_start();
     $user = isset($_POST['user']) ? $_POST['user'] : "";
     $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
 
@@ -12,13 +13,12 @@ if(isset($_POST['submit'])){
     if($sesi > 0){
         $pass_hash = $data_admin['password'];
         if(password_verify($pass, $pass_hash)){
-            session_start();
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
             $_SESSION['status'] = 'login';
             
             echo "<script>alert('Login Berhasil!');</script>";
-			header('location: index.php?p=beranda');
+			header('location: index.php');
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
