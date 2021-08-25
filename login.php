@@ -20,8 +20,8 @@ if(isset($_POST['submit'])){
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
 
-            header('location: index.php?$user=$sesi');
-            die();
+            echo "<script>alert('Login Berhasil!');</script>";
+			echo "<meta http-equiv='refresh' content='0; url=index.php'>";
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
