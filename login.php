@@ -1,8 +1,36 @@
 <?php
+session_start();
 
-    include 'config/koneksi-db.php';
+if(isset($_SESSION['sesi'])){
+    header('location:index.php?p=beranda');
+}
 
-    if(!isset($_POST['submit'])){
+include 'config/koneksi-db.php';
+
+if(isset($_POST['submit'])){
+    $user = isset($_POST['user']) ? $_POST['user'] : "";
+    $pass = isset($_POST['pass']) ? $_POST['pass'] : "";
+
+    $query = mysqli_query($db_conn, "SELECT * FROM admin WHERE username = '$user'");
+    $sesi = mysqli_num_rows($query);
+    $data_admin = mysqli_fetch_array($query);
+    if($sesi > 0){
+        $pass_hash = $data_admin['password'];
+        if(password_verify($pass, $pass_hash)){
+            $_SESSION['id_admin'] = $data_admin['id_admin'];
+            $_SESSION['sesi'] = $data_admin['nm_admin'];
+
+            header('location: index.php?$user=$sesi');
+            die();
+        } else {
+            echo "<script>alert('Username Dan Password Salah!!');</script>";
+            echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+        }
+    } else {
+        echo "<script>alert('Username Dan Password Salah!');</script>";
+        echo "<meta http-equiv='refresh' content='0; url=login.php'>";
+    }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +58,7 @@
                 </div>
                 <h1 class="text-center">ADMIN PERPUSTAKAAN</h1>
             </div>
-            <div class="form-login container">
+            <div class="form-login">
                 <h2 class="text-center">Login</h2>
                 <hr style="border: 3px solid white;width:45%;">
                 <form action="" method="POST">
@@ -57,31 +85,3 @@
 	<script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
-
-<?php 
-    }else{
-        $user = $_POST['user'];
-        $pass = $_POST['pass'];
-
-        $query = mysqli_query($db_conn, "SELECT * FROM admin WHERE username = '$user'");
-        $sesi = mysqli_num_rows($query);
-        $data_admin = mysqli_fetch_array($query);
-        if($sesi > 0){
-            $pass_hash = $data_admin['password'];
-            if(password_verify($pass, $pass_hash)){
-                session_start();
-                $_SESSION['id_admin'] = $data_admin['id_admin'];
-                $_SESSION['sesi'] = $data_admin['nm_admin'];
-                echo "<script>alert('Login Berhasil!');</script>";
-			    echo "<meta http-equiv='refresh' content='0; url=index.php'>";
-            } else {
-                echo "<script>alert('Username Dan Password Salah!!');</script>";
-                echo "<meta http-equiv='refresh' content='0; url=login.php'>";
-            }
-        } else {
-            echo "<script>alert('Username Dan Password Salah!');</script>";
-            echo "<meta http-equiv='refresh' content='0; url=login.php'>";
-        }
-    }
-
-?>
