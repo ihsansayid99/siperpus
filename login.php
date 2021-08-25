@@ -17,11 +17,12 @@ if(isset($_POST['submit'])){
     if($sesi > 0){
         $pass_hash = $data_admin['password'];
         if(password_verify($pass, $pass_hash)){
+            session_start();
             $_SESSION['id_admin'] = $data_admin['id_admin'];
             $_SESSION['sesi'] = $data_admin['nm_admin'];
-            session_start();
+            
             echo "<script>alert('Login Berhasil!');</script>";
-			echo "<meta http-equiv='refresh' content='0; url=index.php'>";
+			header('location: index.php?p=beranda');
         } else {
             echo "<script>alert('Username Dan Password Salah!!');</script>";
             echo "<meta http-equiv='refresh' content='0; url=login.php'>";
