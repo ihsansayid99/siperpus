@@ -1,5 +1,5 @@
 <?php
-
+	include '../config/koneksi-db.php';
 	$sql = "SELECT * FROM tbanggota ORDER BY idanggota DESC;";
 	$query = mysqli_query($db_conn, $sql);
 	$row = $query->num_rows;

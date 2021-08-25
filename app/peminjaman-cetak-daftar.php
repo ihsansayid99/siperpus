@@ -1,5 +1,5 @@
 <?php
-
+	include '../config/koneksi-db.php';
 	$sql = "SELECT transaksi.id_transaksi, tbanggota.nama, buku.judul_buku, transaksi.tanggal_pinjam, transaksi.tanggal_kembali, admin.nm_admin FROM 
 		buku INNER JOIN transaksi ON transaksi.id_buku = buku.id_buku INNER JOIN tbanggota ON transaksi.id_anggota = tbanggota.idanggota INNER JOIN admin ON transaksi.id_admin = admin.id_admin ORDER BY id_transaksi DESC;";
 	$query = mysqli_query($db_conn, $sql);

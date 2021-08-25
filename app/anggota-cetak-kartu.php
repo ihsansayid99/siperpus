@@ -1,4 +1,5 @@
 <?php
+	include '../config/koneksi-db.php';
 	use Dompdf\Dompdf; 
 	require("../assets/vendor/autoload.php");
 	if(isset($_GET['id'])) { // memperoleh anggota_id
@@ -39,7 +40,7 @@
 				if($data_foto == '-') {
 					$data_foto = 'foto-default.jpg';
 				}
-				$path = "../images/" . $data['foto'];
+				$path = "../images/" . $data_foto;
 				$type = pathinfo($path, PATHINFO_EXTENSION);
 				$data = file_get_contents($path);
 				$base64 = 'data:image/' . $type . ';base64,'. base64_encode($data);
