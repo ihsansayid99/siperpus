@@ -9,9 +9,11 @@
 			$query3 = mysqli_query($db_conn, $sql3);
 			$data3 = mysqli_fetch_array($query3);
 			$nama_file = $data3['foto'];
-			$dir_images = './images/';
-			$path_image = $dir_images . $nama_file;
-			unlink($path_image);
+			if($nama_file != '-'){
+				$dir_images = './images/';
+				$path_image = $dir_images . $nama_file;
+				unlink($path_image);
+			}
 			$sql = "DELETE FROM tbanggota WHERE idanggota = '{$id_anggota}';";
 			$query = mysqli_query($db_conn, $sql);
 

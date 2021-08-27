@@ -1,8 +1,8 @@
 <?php
-    $hostname   = "mysql-db";
-    $user       = "ihsan";
-    $password   = "ihsanpass";
-    $db_name    = "db_pus";
+    $hostname   = "mysql-db"; // localhost
+    $user       = "ihsan"; // root
+    $password   = "ihsanpass"; // null
+    $db_name    = "db_pus"; // sama
     
     $db_conn = mysqli_connect($hostname, $user, $password, $db_name);
 

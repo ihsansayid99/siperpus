@@ -111,8 +111,8 @@
 			$id_anggota 	= $_POST['id_anggota'];
 			$nama_lengkap 	= $_POST['nama_lengkap'];
 			$jenis_kelamin	= $_POST['jenis_kelamin'];
-					$alamat			= $_POST['alamat'];
-				$file_foto 		= $_FILES['foto']['name'];
+			$alamat			= $_POST['alamat'];
+			$file_foto 		= $_FILES['foto']['name'];
 			$status_aktif	= 'Y';
 		if(!empty($file_foto)) {
 			// Rename file foto. Contoh: foto-AG007.jpg
